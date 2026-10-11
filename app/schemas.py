@@ -34,7 +34,7 @@ class CarUpdate(CarBase):
     year: int | None = Field(default=None, gt=1900, lt=2027)
     additional_options: list[str] | None = Field(default=None, max_length=20)
 
-class CarResponse(BaseModel):
+class CarResponse(CarBase):
     id: int
     is_available: bool
     added_at: datetime.datetime
