@@ -26,7 +26,7 @@ def get_cars(session: Session, car_make_model: str | None = None, fuel_type: Fue
 def get_car(session: Session, car_id: int) -> Car | None:
     return session.get(Car, car_id)
 
-def update_car(session: Session, payload: CarUpdate, car: Car) -> Car:
+def update_car(session: Session, car: Car, payload: CarUpdate) -> Car:
     changes_dict = payload.model_dump(exclude_unset=True)
     for key, value in changes_dict.items():
         setattr(car, key, value)
