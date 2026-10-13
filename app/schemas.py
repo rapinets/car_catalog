@@ -1,8 +1,11 @@
 import datetime
+from typing import Annotated
 
 from pydantic import BaseModel, Field, ConfigDict
 
 from app.models import Body, FuelType
+
+Option = Annotated[str, Field(min_length=1, max_length=200)]
 
 
 class CarBase(BaseModel):
@@ -16,7 +19,7 @@ class CarBase(BaseModel):
     rating: float = Field(ge=0.0)
     summary: str | None = Field(default=None, max_length=2000000)
     year: int = Field(gt=1900, lt=2027)
-    additional_options: list[str] | None = Field(default=None, max_length=20)
+    additional_options: list[Option] | None = Field(default=None, max_length=20)
 
 class CarCreate(CarBase):
     pass

@@ -34,6 +34,6 @@ def update_car(session: Session, car: Car, payload: CarUpdate) -> Car:
     session.refresh(car)
     return car
 
-def delete_car(session: Session, car: Car) -> None:
+def delete_car(car: Car, session: Session) -> None:
     session.delete(car)
     session.commit()
